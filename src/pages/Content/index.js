@@ -1,7 +1,6 @@
 import { Arrive } from './modules/arrive';
 import { helper } from './modules/helper';
 
-
 console.log('content script running');
 
 document.arrive(
@@ -15,7 +14,7 @@ document.arrive(
 function MainFunc(jobCards) {
   if (jobCards.length > 0) {
     jobCards.forEach((card, index) => {
-      var exist = card.querySelectorAll(".upworkjobscoreext");
+      var exist = card.querySelectorAll('.upworkjobscoreext');
       if (exist.length < 1) {
         var TotalJobScore = 0;
         var count = 0;
@@ -24,6 +23,13 @@ function MainFunc(jobCards) {
           var JobTypeScore = helper.getJobTypeScore(jobType[0].innerText);
           // console.log(JobTypeScore);
           TotalJobScore += parseFloat(JobTypeScore);
+          count += 1;
+        }
+        var Proposals = card.querySelectorAll('strong[data-test="proposals"]');
+        if (Proposals.length > 0) {
+          var ProposalScore = helper.getProposalScore(Proposals[0].innerText);
+          // console.log(ProposalScore);
+          TotalJobScore += parseFloat(ProposalScore);
           count += 1;
         }
         var clientPaymentStatus = card.querySelectorAll(
@@ -47,13 +53,13 @@ function MainFunc(jobCards) {
           count += 1;
         }
         var clientRating = card.querySelectorAll(
-          ".up-rating-background > span"
+          '.up-rating-background > span'
         );
         if (clientRating.length > 0) {
           var ClientRatingScore = helper.getClientRating(
             clientRating[0].innerText
-              .replace("Rating is ", "")
-              .replace(" out of 5.", "")
+              .replace('Rating is ', '')
+              .replace(' out of 5.', '')
           );
           // console.log(ClientRatingScore);
           TotalJobScore += parseFloat(ClientRatingScore);
@@ -71,11 +77,11 @@ function MainFunc(jobCards) {
         // console.log(TotalJobScore);
         TotalJobScore = (TotalJobScore / count).toFixed(1);
         if (TotalJobScore > 6.9 && TotalJobScore < 10.1) {
-          createJobBadge("greenJobSE", card, TotalJobScore);
+          createJobBadge('greenJobSE', card, TotalJobScore);
         } else if (TotalJobScore > 2.9 && TotalJobScore < 7) {
-          createJobBadge("yellowJobSE", card, TotalJobScore);
+          createJobBadge('yellowJobSE', card, TotalJobScore);
         } else if (TotalJobScore > -0.1 && TotalJobScore < 3) {
-          createJobBadge("redJobSE", card, TotalJobScore);
+          createJobBadge('redJobSE', card, TotalJobScore);
         }
       }
     });
@@ -83,8 +89,8 @@ function MainFunc(jobCards) {
 }
 
 function createJobBadge(classN, card, score) {
-  var div = document.createElement("div");
-  div.className = "upworkjobscoreext";
+  var div = document.createElement('div');
+  div.className = 'upworkjobscoreext';
   div.innerHTML = `<h2 class="${classN}">${score}</h2>`;
   card.appendChild(div);
 }

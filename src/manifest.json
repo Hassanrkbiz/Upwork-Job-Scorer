@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Upwork Job Scorer",
-  "description": "This Extension aims to help fresher freelancers on Upwork to apply on the right jobs, which will increase there chance of getting the job and saving connects.",
+  "description": "This Extension aims to help new freelancers on Upwork to get the right jobs without wasting much connects.",
   "action": {},
   "icons": {
     "128": "logo.png"
@@ -15,7 +15,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["content.styles.css","logo.png"],
+      "resources": ["content.styles.css", "logo.png"],
       "matches": []
     }
   ]

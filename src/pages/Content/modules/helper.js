@@ -1,16 +1,35 @@
 export const helper = {
   getJobTypeScore: (job) => {
-    if (job == "Fixed-price") {
+    if (job == 'Fixed-price') {
       return 7;
     } else {
       return 10;
     }
   },
   getClientPaymentStatus: (job) => {
-    if (job == "Payment verified") {
+    if (job == 'Payment verified') {
       return 10;
     } else {
       return 0;
+    }
+  },
+  getProposalScore: (proposal) => {
+    if (proposal) {
+      if (proposal.toLowerCase() == 'less than 5') {
+        return 10;
+      } else if (proposal.toLowerCase() == '5 to 10') {
+        return 8;
+      } else if (proposal.toLowerCase() == '10 to 15') {
+        return 7;
+      } else if (proposal.toLowerCase() == '15 to 20') {
+        return 6;
+      } else if (proposal.toLowerCase() == '20 to 50') {
+        return 4;
+      } else if (proposal.toLowerCase() == '50+') {
+        return 2;
+      } else {
+        return 0;
+      }
     }
   },
   getClientRating: (rating) => {
@@ -21,14 +40,14 @@ export const helper = {
     }
   },
   getClientPaid: (paid) => {
-    paid = paid.replace("+", "").replace("$", "");
-    if (paid.toString().includes("k")) {
-      paid.replace("k", "");
+    paid = paid.replace('+', '').replace('$', '');
+    if (paid.toString().includes('k')) {
+      paid.replace('k', '');
       paid = parseInt(paid);
       paid = paid * 1000;
     }
-    if (paid.toString().includes("m")) {
-      paid.replace("m", "");
+    if (paid.toString().includes('m')) {
+      paid.replace('m', '');
       paid = parseInt(paid);
       paid = paid * 1000000;
     }
@@ -61,13 +80,13 @@ export const helper = {
     var timeNum = time.match(/([0-9]+)/g);
     if (timeNum !== null) {
       timeNum = parseInt(timeNum[0]);
-      if (time.toString().includes("hour")) {
+      if (time.toString().includes('hour')) {
         timeNum = timeNum * 60 * 60;
-      } else if (time.toString().includes("minute")) {
+      } else if (time.toString().includes('minute')) {
         timeNum = timeNum * 60;
-      } else if (time.toString().includes("day")) {
+      } else if (time.toString().includes('day')) {
         timeNum = timeNum * 60 * 60 * 24;
-      } else if (time.toString().includes("month")) {
+      } else if (time.toString().includes('month')) {
         timeNum = timeNum * 60 * 60 * 24 * 30;
       }
       if (timeNum < 3600) {
