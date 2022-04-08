@@ -11,9 +11,7 @@ With this Extension, you can apply on the right job which will increase your cha
 
 This Extension Calculates the Score based on client payment status, client spending, hourly or fixed job, job posting time, how many people already Applied, client rating etc.. To give you a better idea, if you are applying to a right job or not.. 
 
-As we all know how important, the upwork connects are to us. So our aim is to help new freelancer, find the right job!
-
-Please Share it with your Upwork Friends 
+As we all know how important, the upwork connects are to us. So our aim is to help new freelancer, find the right job! 
 
 Found a bug? The project is open sourced, feel free to collaborate =)
 
