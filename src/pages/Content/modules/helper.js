@@ -1,11 +1,11 @@
 export const helper = {
-  getJobTypeScore: (job) => {
-    if (job == 'Fixed-price') {
-      return 7;
-    } else {
-      return 10;
-    }
-  },
+  // getJobTypeScore: (job) => {
+  //   if (job == 'Fixed-price') {
+  //     return 7;
+  //   } else {
+  //     return 10;
+  //   }
+  // },
   getClientPaymentStatus: (job) => {
     if (job == 'Payment verified') {
       return 10;
@@ -102,6 +102,17 @@ export const helper = {
       }
     } else {
       return 0;
+    }
+  },
+  isSpamJob: (desc) => {
+    var numberRegex =
+      /\s(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4,5}\s/gi;
+    var emailRegex = /[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/gi;
+
+    if (numberRegex.test(desc) || emailRegex.test(desc)) {
+      return true;
+    } else {
+      return false;
     }
   },
 };

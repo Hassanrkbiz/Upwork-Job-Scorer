@@ -1,23 +1,32 @@
 .upworkjobscoreext {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .upworkjobscoreext > h2 {
-    padding: 20px;
-    border-radius: 50px;
-    color: white;
-    font-weight: bolder;
-    box-shadow: 2px 5px 6px gray;
-  }
-  .greenJobSE {
-    background-color: lightgreen;
-    border: 5px solid green;
-  }
-  .yellowJobSE {
-    background-color: #fde415;
-    border: 5px solid #b9a819;
-  }
-  .redJobSE {
-    background-color: #f76565;
-    border: 5px solid red;
-  }
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.upworkjobscoreext > h2 {
+  padding: 20px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bolder;
+  box-shadow: 2px 5px 6px gray;
+  margin-top: -4rem;
+}
+.greenJobSE {
+  background-color: lightgreen;
+  border: 5px solid green;
+}
+.yellowJobSE {
+  background-color: #fde415;
+  border: 5px solid #b9a819;
+}
+.redJobSE {
+  background-color: #f76565;
+  border: 5px solid red;
+}
+
+.spamJobSE {
+  align-self: center;
+  background-color: red;
+  color: white;
+  padding: 3px 8px;
+}
