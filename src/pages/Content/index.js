@@ -110,7 +110,7 @@ function createJobBadge(classN, card, score, spam) {
     card.style.backgroundColor = '#ffaaaa';
   }
   div.innerHTML = spam
-    ? `<h2 class="${classN}">${score}</h2><div class="spamJobSE">Job is likely to be Spam</div>`
+    ? `<h2 class="${classN}">${score}</h2><div class="spamJobSE">LIKELY SCAM PLEASE BE CAREFUL!</div>`
     : `<h2 class="${classN}">${score}</h2>`;
   card.appendChild(div);
 }
