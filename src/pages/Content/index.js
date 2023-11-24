@@ -11,6 +11,14 @@ document.arrive(
   }
 );
 
+document.arrive(
+  '[data-test="job-tile-list"] > section.air3-card-section',
+  function (elem) {
+    console.log('elem created');
+    MainFunc([elem]);
+  }
+);
+
 function MainFunc(jobCards) {
   if (jobCards.length > 0) {
     jobCards.forEach((card, index) => {
