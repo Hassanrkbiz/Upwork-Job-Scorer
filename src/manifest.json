@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "4.3.7",
+  "version": "4.3.8",
   "name": "Upwork Job Scorer & Spam Detector",
   "description": "This Extension aims to help new freelancers on Upwork to get the right jobs without wasting much connects.",
   "action": {},

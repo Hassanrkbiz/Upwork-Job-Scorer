@@ -4,7 +4,7 @@ import { helper } from './modules/helper';
 console.log('content script running');
 
 document.arrive(
-  '[data-test="job-tile-list"] > section.up-card-section',
+  '[data-test="job-tile-list"] > section.air3-card-section',
   function (elem) {
     console.log('elem created');
     MainFunc([elem]);
@@ -28,18 +28,18 @@ function MainFunc(jobCards) {
         var Proposals = card.querySelectorAll('strong[data-test="proposals"]');
         if (Proposals.length > 0) {
           var ProposalScore = helper.getProposalScore(Proposals[0].innerText);
-          // console.log(ProposalScore);
+          console.log('ProposalScore', ProposalScore);
           TotalJobScore += parseFloat(ProposalScore);
           count += 1;
         }
         var clientPaymentStatus = card.querySelectorAll(
-          'strong[class="text-muted"]'
+          '[data-test="payment-verification-status"] > strong'
         );
         if (clientPaymentStatus.length > 0) {
           var PaymentStatusScore = helper.getClientPaymentStatus(
             clientPaymentStatus[0].innerText
           );
-          // console.log(PaymentStatusScore);
+          console.log('PaymentStatusScore', PaymentStatusScore);
           TotalJobScore += parseFloat(PaymentStatusScore);
           count += 1;
         }
@@ -48,20 +48,19 @@ function MainFunc(jobCards) {
         );
         if (clientPaid.length > 0) {
           var ClientPaidScore = helper.getClientPaid(clientPaid[0].innerText);
-          // console.log(ClientPaidScore);
+          console.log('ClientPaidScore', ClientPaidScore);
           TotalJobScore += parseFloat(ClientPaidScore);
           count += 1;
         }
-        var clientRating = card.querySelectorAll(
-          '.up-rating-background > span'
-        );
+        var clientRating = card.querySelectorAll("[data-test='js-feedback']");
         if (clientRating.length > 0) {
           var ClientRatingScore = helper.getClientRating(
             clientRating[0].innerText
               .replace('Rating is ', '')
               .replace(' out of 5.', '')
+              .trim()
           );
-          // console.log(ClientRatingScore);
+          console.log('ClientRatingScore', ClientRatingScore);
           TotalJobScore += parseFloat(ClientRatingScore);
           count += 1;
         }
@@ -78,12 +77,14 @@ function MainFunc(jobCards) {
           var JobPostingScore = helper.getJobPostingTime(
             JobPostingTime[0].innerText
           );
-          // console.log(JobPostingScore);
+          console.log('JobPostingScore', JobPostingScore);
           TotalJobScore += parseFloat(JobPostingScore);
           count += 1;
         }
-        // console.log(TotalJobScore);
+
         TotalJobScore = (TotalJobScore / count).toFixed(1);
+
+        console.log(TotalJobScore);
         if (TotalJobScore > 6.9 && TotalJobScore < 10.1) {
           createJobBadge('greenJobSE', card, TotalJobScore, spamJob);
         } else if (TotalJobScore > 2.9 && TotalJobScore < 7) {

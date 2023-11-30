@@ -7,7 +7,7 @@ export const helper = {
   //   }
   // },
   getClientPaymentStatus: (job) => {
-    if (job == 'Payment verified') {
+    if (job.includes('Payment verified')) {
       return 10;
     } else {
       return 0;
@@ -41,12 +41,12 @@ export const helper = {
   },
   getClientPaid: (paid) => {
     paid = paid.replace('+', '').replace('$', '');
-    if (paid.toString().includes('k')) {
+    if (paid.toString().toLowerCase().includes('k')) {
       paid.replace('k', '');
       paid = parseInt(paid);
       paid = paid * 1000;
     }
-    if (paid.toString().includes('m')) {
+    if (paid.toString().toLowerCase().includes('m')) {
       paid.replace('m', '');
       paid = parseInt(paid);
       paid = paid * 1000000;
